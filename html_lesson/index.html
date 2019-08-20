@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Program Index</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link
+      rel="stylesheet"
+      href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+    <link rel="stylesheet" href="./stylesheet.css" type="text/css" />
+  </head>
+  <body>
+    <div class="content">
+      <div class="container">
+        <div class="card">
+          <div class="card-title">
+            <h2>Registeration Form</h2>
+          </div>
+          <div class="card-content">
+            <form>
+              <div class="form-row">
+                <div class="col-md-6">
+                  <label class="label-input" for="name"
+                    >Name<span>*</span></label
+                  >
+                  <input
+                    class="form-control-input"
+                    type="text"
+                    id="name"
+                    autocomplete="off"
+                  />
+                </div>
+
+                <div class="col-md-6">
+                  <label class="label-input" for="rolno"
+                    >Roll no<span>*</span></label
+                  >
+                  <input class="form-control-input" type="text" id="rolno" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-6">
+                  <label class="label-input" for="dob">D.O.B.</label>
+                  <input
+                    class="form-control-input"
+                    type="text"
+                    id="datepicker"
+                  />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-6">
+                  <div class="btn-group">
+                    <input
+                      type="button"
+                      class="btn sub"
+                      id="register"
+                      value="Register"
+                    />
+                    <button class="btn reset" type="reset" id="res">
+                      Reset
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="modal-wrapper" id="modal-data">
+        <div class="modal">
+          <div class="close-modal">
+            <i class="fa fa-2x fa-times"></i>
+          </div>
+          <div class="card-title"><h2>Register Data</h2></div>
+          <div class="card-content">REGISTERED DATA</div>
+        </div>
+      </div>
+    </div>
+    <script>
+      $("#datepicker").datepicker();
+      $("#register").click(() => {
+        $("#modal-data").slideDown();
+        $(".modal")
+          .delay(50)
+          .fadeIn();
+      });
+      $(".close-modal").click(() => {
+        $(".modal").fadeOut();
+        $("#modal-data")
+          .delay(150)
+          .slideUp();
+      });
+    </script>
+  </body>
+</html>

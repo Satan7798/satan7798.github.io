@@ -28,12 +28,7 @@
                   <label class="label-input" for="name"
                     >Name<span>*</span></label
                   >
-                  <input
-                    class="form-control-input"
-                    type="text"
-                    id="name"
-                    autocomplete="off"
-                  />
+                  <input class="form-control-input" type="text" id="name" />
                 </div>
 
                 <div class="col-md-6">
@@ -61,6 +56,7 @@
                       class="btn sub"
                       id="register"
                       value="Register"
+                      onclick="validate()"
                     />
                     <button class="btn reset" type="reset" id="res">
                       Reset
@@ -75,26 +71,61 @@
       <div class="modal-wrapper" id="modal-data">
         <div class="modal">
           <div class="close-modal">
-            <i class="fa fa-2x fa-times"></i>
+            <i class="fa fa-2x fa-times" onclick="slideUp()"></i>
           </div>
           <div class="card-title"><h2>Register Data</h2></div>
-          <div class="card-content">REGISTERED DATA</div>
+          <div class="card-content">
+            <p id="name1"></p>
+            <p id="rolno1"></p>
+            <p id="date1"></p>
+          </div>
         </div>
       </div>
     </div>
     <script>
       $("#datepicker").datepicker();
-      $("#register").click(() => {
-        $("#modal-data").slideDown();
-        $(".modal")
-          .delay(50)
-          .fadeIn();
-      });
-      $(".close-modal").click(() => {
-        $(".modal").fadeOut();
-        $("#modal-data")
-          .delay(150)
-          .slideUp();
+    </script>
+    <script>
+      function slideDown() {
+        let modal = document.getElementById("modal-data");
+        modal.style.height = screen.height + "px";
+      }
+      function slideUp() {
+        let modal = document.getElementById("modal-data");
+        modal.style.height = 0 + "px";
+      }
+      function validate() {
+        let name = document.getElementById("name").value;
+        let date = document.getElementById("datepicker").value;
+        let rolSize = document.forms[0].elements[1].value.length;
+        let rolValue = document.forms[0].elements[1].value;
+        if (name === "" || rolValue === "" || date === "") {
+          alert("Please fill all fields!");
+          return false;
+        } else if (rolSize === 7 && checkRollno(rolValue)) {
+          slideDown();
+          document.getElementById("name1").innerHTML = name;
+          document.getElementById("rolno1").innerHTML = rolno.value;
+          document.getElementById("date1").innerHTML = date;
+        } else {
+          alert("Something went wrong!");
+        }
+      }
+
+      function checkRollno(rolno) {
+        let str = rolno;
+        console.log(str + "check");
+        for (let i = 0; i < 7; i++) {
+          if (!(str[i] >= "0" && str[i] <= "9")) {
+            console.log("Check2");
+            return false;
+          }
+        }
+        return true;
+      }
+
+      document.getElementById("modal-data").addEventListener("click", () => {
+        slideUp();
       });
     </script>
   </body>

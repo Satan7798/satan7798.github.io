@@ -18,6 +18,13 @@
     flex: 0 0 50%;
     max-width: 50%;
   }
+  .card {
+    margin: 0px 20px;
+    /* padding: 10px 57px 57px; */
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  }
 }
 .form-row {
   flex-wrap: wrap;
@@ -34,13 +41,14 @@
   width: 100%;
   border: #ced4da solid 1px;
   border-radius: 0.25rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 /* .form-control-input:focus {
-    height: 30px;
-    border: lightblue solid 1px;
-    border-radius: 5px;
-  } */
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  height: calc(1.5em+0.75em+2px);
+  box-shadow: lightblue;
+  border-color: #007bff solid;
+  border-radius: 0.25rem;
+} */
 input[type="date"] {
   padding-inline-start: 1px;
   cursor: default;
@@ -79,8 +87,9 @@ input[type="date"] {
   left: 0;
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 100;
-  /* Change the display property to none */
-  display: none;
+  overflow: hidden;
+  transition: height 1s ease-out;
+  height: 0;
 }
 .fa-times {
   position: absolute;
@@ -128,6 +137,6 @@ input[type="date"] {
   background: #007bff;
 }
 .form-row > [class*="col-"] {
-    padding-right: 5px;
-    padding-left: 5px;
-  }
+  padding-right: 5px;
+  padding-left: 5px;
+}
